@@ -1,5 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=B612+Mono:wght@700&display=swap");
 .container {
   max-width: 90%;
+}
+#currentDay {
+  font-family: "B612 Mono", monospace;
 }
 .time-block {
   background-color: whitesmoke;

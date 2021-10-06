@@ -1,0 +1,22 @@
+.container {
+  max-width: 90%;
+}
+.time-block {
+  background-color: whitesmoke;
+  textarea {
+    background-color: whitesmoke;
+    padding: 2px;
+    margin: 4px 0;
+    border: 1px solid lightgrey;
+    &:focus {
+      outline: none !important;
+      background: white;
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .time-block textarea {
+    margin: 0 4px 4px;
+  }
+}

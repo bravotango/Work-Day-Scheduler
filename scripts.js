@@ -120,7 +120,7 @@ $(document).ready(function () {
         targetForm.addClass("bg-primary");
         console.log(`set primary on: ${workHours[i]}`);
       } else if (currentHour < workHours[i]) {
-        targetForm.addClass("bg-gradient-success");
+        targetForm.addClass("bg-success");
         console.log(`set success on: ${workHours[i]}`);
       } else if (currentHour > workHours[i]) {
         targetForm.addClass("bg-secondary");

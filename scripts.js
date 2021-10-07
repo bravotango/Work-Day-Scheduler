@@ -4,11 +4,12 @@ $(document).ready(function () {
   let currentHour;
   const workHours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17]; // military time
 
+  // create time block for each hour in workHours
   for (let i = 0; i < workHours.length; i++) {
     createFormTimeBlock(workHours[i]);
   }
 
-  // event listener for a form .saveBtn clicked
+  // add click event listener for time block .saveBtn
   $("form").on("submit", function (e) {
     e.preventDefault();
     const description = $(this).children(".description").val(); // value typed into the textarea associated (sibling) of saveBtn
@@ -24,7 +25,9 @@ $(document).ready(function () {
     const formBlock = $("#formBlocks");
     const form = $("<form>")
       .attr("id", `time${hour}`)
-      .addClass("row time-block text-white rounded border-right border-bottom");
+      .addClass(
+        "row time-block text-white rounded border-right border-bottom bg-dark"
+      );
 
     // hour container elements
     const timeContainer = createTimeContainer(hour);
@@ -108,14 +111,20 @@ $(document).ready(function () {
   }
 
   function applyClasses() {
+    console.log("current hour", currentHour);
     for (let i = 0; i < workHours.length; i++) {
       const targetForm = $(`form#time${workHours[i]}`);
-      if (currentHour == workHours[i]) {
+      targetForm.removeClass("bg-dark");
+
+      if (currentHour === workHours[i]) {
         targetForm.addClass("bg-primary");
+        console.log(`set primary on: ${workHours[i]}`);
       } else if (currentHour < workHours[i]) {
-        targetForm.addClass("bg-success");
+        targetForm.addClass("bg-gradient-success");
+        console.log(`set success on: ${workHours[i]}`);
       } else if (currentHour > workHours[i]) {
         targetForm.addClass("bg-secondary");
+        console.log(`set secondary on: ${workHours[i]}`);
       }
     }
   }

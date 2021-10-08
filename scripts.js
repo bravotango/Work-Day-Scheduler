@@ -2,7 +2,7 @@ $(document).ready(function () {
   let currentDate;
   let timer;
   let currentHour;
-  const workHours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17]; // military time
+  const workHours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]; // military time
 
   // create time block for each hour in workHours
   for (let i = 0; i < workHours.length; i++) {
@@ -93,7 +93,6 @@ $(document).ready(function () {
       currentDate = moment().format("MMMM Do YYYY, h:mm:ss a");
       if (currentHour !== moment().hour()) {
         currentHour = moment().hour();
-        console.log("update classes");
         applyClasses();
       }
       $("#currentDay").text(currentDate);
@@ -110,21 +109,26 @@ $(document).ready(function () {
     }
   }
 
+  function clearContextualClasses(targetForm) {
+    targetForm.removeClass("bg-dark");
+    targetForm.removeClass("bg-secondary");
+    targetForm.removeClass("bg-primary");
+    targetForm.removeClass("bg-success");
+
+    return targetForm;
+  }
+
   function applyClasses() {
-    console.log("current hour", currentHour);
     for (let i = 0; i < workHours.length; i++) {
-      const targetForm = $(`form#time${workHours[i]}`);
-      targetForm.removeClass("bg-dark");
+      let targetForm = $(`form#time${workHours[i]}`);
+      targetForm = clearContextualClasses(targetForm);
 
       if (currentHour === workHours[i]) {
         targetForm.addClass("bg-primary");
-        console.log(`set primary on: ${workHours[i]}`);
       } else if (currentHour < workHours[i]) {
         targetForm.addClass("bg-success");
-        console.log(`set success on: ${workHours[i]}`);
       } else if (currentHour > workHours[i]) {
         targetForm.addClass("bg-secondary");
-        console.log(`set secondary on: ${workHours[i]}`);
       }
     }
   }

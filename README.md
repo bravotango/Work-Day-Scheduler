@@ -1,6 +1,6 @@
 # Work Day Scheduler
 
-This work day scheduler is a calendar application that allows a user to save events for each hour of the day. This app runs in the browser and feature dynamically updated HTML and CSS powered by jQuery & Moment.js libraries.
+This work day scheduler is a calendar application that allows a user to save events for each hour of the day. This app runs in the browser and feature dynamically updated HTML & CSS powered by jQuery & Moment.js libraries.
 
 This application is fully responsive and leverages BootstrapCSS for the grid and contextual backgrounds used to convey past, present, and future time blocks, by applying "bg-secondary", "bg-info", and "bg-success" respectively.
 
@@ -34,29 +34,34 @@ THEN the saved events persist
 
 ### Desktop
 
-Desktop friendly use of BootstrapCSS grid
+Desktop friendly use of BootstrapCSS grid.
+
 ![Desktop view](./images/desktop.png)
 
 ### Mobile
 
-Mobile friendly use of BootstrapCSS grid
+Mobile friendly use of BootstrapCSS grid.
+
 ![Mobile view](./images/mobile.png)
 
-### Edit feature
+### Edit Feature
 
 Example of a time block with values populated from local storage.
+
 ![Edit feature - pre edit](./images/preEdit.png)
 
-### Save button
+### Save Button
 
 When users edit a time block, the "primary" class is applied to draw attention to save the changes.
+
 ![Edit feature - editing](./images/editing.png)
 
-### Hours key
+### Hours Key
 
 'Hours' key added to help users understand contextual meaning of the background colors.
+
 ![Hours key](./images/hoursKey.png)
 
-## Deployed Application
+## Github Deployed Application
 
 [https://bravotango.github.io/work-day-scheduler/](https://bravotango.github.io/work-day-scheduler/)

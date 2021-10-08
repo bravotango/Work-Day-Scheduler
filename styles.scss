@@ -3,12 +3,18 @@
 .btn {
   transition: all 0.5s ease-out;
 }
-.key-square {
-  width: 20px;
-  height: 20px;
-  float: left;
-  margin: 6px;
+.key {
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .key-square {
+    min-width: 20px;
+    min-height: 10px;
+    margin: 0 6px;
+  }
 }
+
 .container {
   max-width: 90%;
 }
@@ -30,7 +36,7 @@
 }
 
 @media (max-width: 575.98px) {
-  .time-block textarea {
-    margin: 0 4px 4px;
+  html {
+    font-size: 0.67rem;
   }
 }

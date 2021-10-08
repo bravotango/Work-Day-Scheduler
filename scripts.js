@@ -110,7 +110,9 @@ $(document).ready(function () {
   }
 
   function createTextareaContainer() {
-    const textarea = $("<textarea>").addClass("col-sm-8 col-lg-10 description");
+    const textarea = $("<textarea>").addClass(
+      "col-sm-8 col-lg-10 description mx-1 mx-sm-0"
+    );
     textarea.prop("required", true);
     return textarea;
   }

@@ -2,7 +2,7 @@
 
 This work day scheduler is a calendar application that allows a user to save events for each hour of the day. This app runs in the browser and feature dynamically updated HTML and CSS powered by jQuery & Moment.js libraries.
 
-This application is fully responsive and leverages BootstrapCSS for the grid and contextual backgrounds used to convey past, present, future time blocks, by applying "bg-secondary", "bg-primary", and "bg-success" respectively.
+This application is fully responsive and leverages BootstrapCSS for the grid and contextual backgrounds used to convey past, present, future time blocks, by applying "bg-secondary", "bg-info", and "bg-success" respectively.
 
 ## Satisfied Acceptance Criteria
 

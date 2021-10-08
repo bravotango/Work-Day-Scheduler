@@ -1,4 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=B612+Mono:wght@700&display=swap");
+.primary .btn,
+.btn {
+  transition: all 0.5s ease-out;
+}
+.key-square {
+  width: 20px;
+  height: 20px;
+  float: left;
+  margin: 6px;
+}
 .container {
   max-width: 90%;
 }
@@ -8,12 +18,12 @@
 .time-block {
   background-color: whitesmoke;
   textarea {
-    background-color: whitesmoke;
+    background-color: rgb(225, 225, 225);
     padding: 0 6px;
     margin: 4px 0;
     border: 1px solid lightgrey;
     &:focus {
-      outline: none !important;
+      outline: none;
       background: white;
     }
   }

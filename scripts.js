@@ -2,31 +2,76 @@ $(document).ready(function () {
   let currentDate;
   let timer;
   let currentHour;
-  const workHours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]; // military time
+  const workHours = [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    21, 22, 23,
+  ]; // military time day starts at 0
 
   // create time block for each hour in workHours
   for (let i = 0; i < workHours.length; i++) {
     createFormTimeBlock(workHours[i]);
   }
 
-  // add click event listener for time block .saveBtn
+  $("#dayOfTheWeek").text(`Your ${moment().format("dddd")} Schedule`);
+
+  // event listener for time block form submit
   $("form").on("submit", function (e) {
     e.preventDefault();
-    const description = $(this).children(".description").val(); // value typed into the textarea associated (sibling) of saveBtn
+    const description = $(this).children(".description").val(); // value typed into the textarea
     const key = $(this).attr("id"); // key to use for local storage
     // save to local storage
     localStorage.setItem(key, description);
+    // remove primary class from mobile button when textarea content changes
+    removeBtnFocusClass(this);
+  });
+
+  $("textarea").on("keydown", function () {
+    addBtnFocusClass(this);
   });
 
   timeUpdater();
   getLocalStorageData();
+
+  function removeBtnFocusClass(el) {
+    // remove primary class from mobile button when textarea content changes
+    $(el)
+      .children()
+      .children()
+      .eq(1)
+      .children()
+      .removeClass("bg-primary")
+      .trigger("blur");
+    // remove primary class from desktop button when textarea content changes
+    $(el)
+      .children()
+      .eq(2)
+      .children()
+      .eq(0)
+      .removeClass("bg-primary")
+      .trigger("blur");
+  }
+
+  function addBtnFocusClass(el) {
+    // add primary class to desktop button when textarea content changes
+    $(el).siblings().eq(1).children().addClass("bg-primary");
+    // add primary class to mobile button when textarea content changes
+    $(el)
+      .siblings()
+      .eq(0)
+      .children()
+      .eq(1)
+      .children()
+      .addClass("bg-primary")
+      .children()
+      .addClass("py-0");
+  }
 
   function createFormTimeBlock(hour) {
     const formBlock = $("#formBlocks");
     const form = $("<form>")
       .attr("id", `time${hour}`)
       .addClass(
-        "row time-block text-white rounded border-right border-bottom bg-dark"
+        "row time-block text-white rounded border-right border-bottom bg-dark align-items-center"
       );
 
     // hour container elements
@@ -45,16 +90,22 @@ $(document).ready(function () {
   }
 
   function createTimeContainer(hour) {
-    let amPm = hour < 12 || hour === 24 ? "AM" : "PM";
+    let amPm = hour < 12 ? "AM" : "PM";
+    // convert from military time to standard time for display
+    if (hour === 0) {
+      hour = 12;
+    }
     // convert from military time to standard time for display
     const displayHour = hour <= 12 ? hour : hour - 12;
-    const timeContainer = $("<div>").addClass("col-sm-2 hour");
-    const pTime = $("<p>").addClass("float-left").text(`${displayHour}${amPm}`);
+    const timeContainer = $("<div>").addClass("col-sm-2 col-lg-1 hour");
+    const pTime = $("<p>")
+      .addClass("float-left m-0")
+      .text(`${displayHour}${amPm}`);
     const buttonContainer = $("<div>").addClass(
       "d-block d-sm-none float-right saveBtn"
     );
 
-    const saveButtonMobile = createSaveButton();
+    const saveButtonMobile = createSaveButton().addClass("py-0");
 
     buttonContainer.append(saveButtonMobile);
     timeContainer.append(pTime);
@@ -63,14 +114,14 @@ $(document).ready(function () {
   }
 
   function createTextareaContainer() {
-    const textarea = $("<textarea>").addClass("col-sm-8 col-lg-9 description");
+    const textarea = $("<textarea>").addClass("col-sm-8 col-lg-10 description");
     textarea.prop("required", true);
     return textarea;
   }
 
   function createSaveContainer() {
     const saveContainer = $("<div>").addClass(
-      "col-sm-2 col-lg-1 saveBtn d-none d-sm-block"
+      "col-sm-2 col-lg-1 saveBtn d-none d-sm-block text-center"
     );
     const saveButton = createSaveButton();
     saveContainer.append(saveButton);
@@ -112,7 +163,7 @@ $(document).ready(function () {
   function clearContextualClasses(targetForm) {
     targetForm.removeClass("bg-dark");
     targetForm.removeClass("bg-secondary");
-    targetForm.removeClass("bg-primary");
+    targetForm.removeClass("bg-info");
     targetForm.removeClass("bg-success");
 
     return targetForm;
@@ -124,7 +175,7 @@ $(document).ready(function () {
       targetForm = clearContextualClasses(targetForm);
 
       if (currentHour === workHours[i]) {
-        targetForm.addClass("bg-primary");
+        targetForm.addClass("bg-info");
       } else if (currentHour < workHours[i]) {
         targetForm.addClass("bg-success");
       } else if (currentHour > workHours[i]) {

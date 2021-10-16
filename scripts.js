@@ -87,7 +87,6 @@ $(document).ready(function () {
 
   function createTimeContainer(hour) {
     let amPm = hour < 12 ? "AM" : "PM";
-    // convert from military time to standard time for display
     if (hour === 0) {
       hour = 12;
     }

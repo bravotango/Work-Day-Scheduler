@@ -36,31 +36,31 @@ THEN the saved events persist
 
 Desktop friendly use of BootstrapCSS grid.
 
-![Desktop view](./images/desktop.png)
+![Desktop view](./assets/images/desktop.png)
 
 ### Mobile
 
 Mobile friendly use of BootstrapCSS grid.
 
-![Mobile view](./images/mobile.png)
+![Mobile view](./assets/images/mobile.png)
 
 ### Edit Feature
 
 Example of a time block with values populated from local storage.
 
-![Edit feature - pre edit](./images/preEdit.png)
+![Edit feature - pre edit](./assets/images/preEdit.png)
 
 ### Save Button
 
 When users edit a time block, the "primary" class is applied to draw attention to save the changes.
 
-![Edit feature - editing](./images/editing.png)
+![Edit feature - editing](./assets/images/editing.png)
 
 ### Hours Key
 
 'Hours' key added to help users understand contextual meaning of the background colors.
 
-![Hours key](./images/hoursKey.png)
+![Hours key](./assets/images/hoursKey.png)
 
 ## Github Deployed Application
 

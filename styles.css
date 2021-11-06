@@ -1,4 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=B612+Mono:wght@700&display=swap");
+.jumbotron {
+  background-color: #f6f6f6;
+}
+
+.jumbotron img {
+  padding-right: 10px;
+}
+
+.jumbotron p {
+  padding-top: 10px;
+}
+
 .primary .btn,
 .btn {
   -webkit-transition: all 0.5s ease-out;
@@ -14,6 +26,11 @@
   min-width: 20px;
   min-height: 10px;
   margin: 0 6px;
+}
+
+.timer {
+  height: 50px;
+  float: left;
 }
 
 .container {

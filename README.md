@@ -64,4 +64,4 @@ When users edit a time block, the "primary" class is applied to draw attention t
 
 ## Github Deployed Application
 
-[https://bravotango.github.io/work-day-scheduler/](https://bravotango.github.io/work-day-scheduler/)
+[https://bravotango.github.io/Work-Day-Scheduler/](https://bravotango.github.io/Work-Day-Scheduler/)
